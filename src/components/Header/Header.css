@@ -16,7 +16,7 @@ header {
 header > div {
   user-select: none;
   margin-inline: auto;
-  width: min(90%, 70.5rem);
+  width: 90%;
 }
 
 header > .wrapper > .heading {
