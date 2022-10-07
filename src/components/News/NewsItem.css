@@ -4,6 +4,7 @@
   overflow: hidden;
   display: flex;
   flex-direction: column;
+  transition: all 0.15s ease;
 }
 
 .light .card {
@@ -49,6 +50,7 @@
   -webkit-line-clamp: 2;
   line-clamp: 2;
   -webkit-box-orient: vertical;
+  transition: all 0.15s ease;
 }
 
 .light .card .card-title span {
@@ -58,8 +60,6 @@
 .card .card-source {
   font-size: 0.75rem;
   font-weight: 500;
-  color: rgba(var(--light-color), 1);
-  background-color: rgba(var(--primary-color), 1);
   width: fit-content;
   height: fit-content;
   padding: 0.15rem 0.3rem;
@@ -67,9 +67,16 @@
   user-select: none;
 }
 
+.card .card-source::after {
+  font-size: 0.5625rem;
+  content: "\0000a0\002022\0000a0";
+  margin-left: 0.25rem;
+}
+
 .card .text-muted {
   font-size: 0.8rem;
   color: rgba(var(--light-color), 0.5);
+  transition: all 0.15s ease;
 }
 
 .light .card .text-muted {
@@ -84,6 +91,7 @@
   -webkit-line-clamp: 4;
   line-clamp: 4;
   -webkit-box-orient: vertical;
+  transition: all 0.15s ease;
 }
 
 .light .card .card-text {

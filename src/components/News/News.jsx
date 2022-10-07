@@ -939,10 +939,15 @@ export class News extends Component {
   constructor() {
     super();
     this.state = {
-      news: this.article,
+      news: this.article.slice(0, 10),
       loading: false,
+      start: 0,
+      end: 10,
     };
   }
+  // componentDidMount = async () => {
+  //   this.news = this.article.slice(this.state.start, this.state.end);
+  // };
   // componentDidMount = async () => {
   //   let news = await fetch(
   //     `https://newsdata.io/api/1/news?apikey=pub_12002c8e6df9a490b63a54c68d2c5a2238546&language=en&page=1`
@@ -956,9 +961,46 @@ export class News extends Component {
       <>
         <h1 style={{ textTransform: "capitalize" }}>top headlines today </h1>
         <div className="news">
-          {this.state.news.map((element, index) => {
-            return <NewsItem key={index} news={element} />;
-          })}
+          {this.state.news &&
+            this.state.news.map((element, index) => {
+              return <NewsItem key={index} news={element} />;
+            })}
+        </div>
+        <div className="buttons">
+          <button
+            disabled={this.state.start === 0}
+            onClick={() => {
+              window.scroll(0, 0);
+              this.state.start !== 0 &&
+                this.setState({
+                  news: this.article.slice(
+                    this.state.start - 10,
+                    this.state.end - 10
+                  ),
+                  start: this.state.start - 10,
+                  end: this.state.end - 10,
+                });
+            }}
+          >
+            Previous
+          </button>
+          <button
+            disabled={this.state.end === this.article.length}
+            onClick={() => {
+              window.scroll(0, 0);
+              this.state.end !== this.article.length &&
+                this.setState({
+                  news: this.article.slice(
+                    this.state.start + 10,
+                    this.state.end + 10
+                  ),
+                  start: this.state.start + 10,
+                  end: this.state.end + 10,
+                });
+            }}
+          >
+            Next
+          </button>
         </div>
       </>
     );

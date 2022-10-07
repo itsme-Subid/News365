@@ -18,24 +18,24 @@ export class NewsItem extends Component {
             </div>
           )}
           <div className="card-body">
-            {news.source_id && (
-              <span
-                className="card-source"
-                title={`News source: ${news.source_id.toUpperCase()}`}
-              >
-                {news.source_id}
-              </span>
-            )}
             <h5 className="card-title">
               <span>{news.title} </span>
             </h5>
-            <p className="card-text">{news.description}</p>
             <p className="card-text">
               <small className="text-muted">
+                {news.source_id && (
+                  <span
+                    className="card-source"
+                    title={`News source: ${news.source_id.toUpperCase()}`}
+                  >
+                    {news.source_id}
+                  </span>
+                )}
                 {((nowDate - pubDate) / 1000 / 60 / 60).toPrecision(2) +
                   " Hours ago"}
               </small>
             </p>
+            <p className="card-text">{news.description}</p>
             <div className="card-footer">
               {news.link && (
                 <a

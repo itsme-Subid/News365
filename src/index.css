@@ -32,3 +32,25 @@ body {
   background-color: rgb(var(--light-color));
   color: rgb(var(--dark-color));
 }
+
+::-webkit-scrollbar {
+  width: 0.25em;
+}
+
+::-webkit-scrollbar-track {
+  margin-block: 0.45em;
+  transition: all 0.15s ease;
+}
+
+::-webkit-scrollbar-track:hover {
+  background: rgba(var(--dark-color), 0.1);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(var(--light-color), 0.5);
+  border-radius: 0.5rem;
+}
+
+.light ::-webkit-scrollbar-thumb {
+  background: rgb(var(--dark-color), 0.5);
+}
