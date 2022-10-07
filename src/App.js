@@ -10,20 +10,28 @@ export class App extends Component {
       document.body.classList.add("light");
     this.state = {
       menuOpen: false,
+      category: "top",
     };
   }
   render() {
     let menuToggle = () => {
       this.setState({ menuOpen: !this.state.menuOpen });
-      console.log(this.state.menuOpen);
+    };
+    let changeCategory = (category) => {
+      this.setState({ category: category });
+      console.log(category);
     };
     return (
       <>
         <Header menuToggle={menuToggle} />
         <div className="container" style={{ marginTop: "5rem" }}>
-          <News />
+          <News category={this.state.category} />
         </div>
-        <Menu menu={this.state.menuOpen} />
+        <Menu
+          menu={this.state.menuOpen}
+          menuToggle={menuToggle}
+          changeCategory={changeCategory}
+        />
       </>
     );
   }

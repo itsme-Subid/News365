@@ -3,8 +3,7 @@ import React, { Component } from "react";
 
 export class Menu extends Component {
   menuItems = [
-    "Top Stories",
-    "India",
+    "top",
     "world",
     "business",
     "entertainment",
@@ -15,7 +14,6 @@ export class Menu extends Component {
     "science",
     "sports",
     "technology",
-    "top",
   ];
   componentDidMount() {
     document.querySelector(".menu-item").classList.add("active");
@@ -25,6 +23,8 @@ export class Menu extends Component {
       item.classList.remove("active");
     });
     e.target.classList.toggle("active");
+    this.props.changeCategory(e.target.innerText);
+    this.props.menuToggle();
   };
   render() {
     return (

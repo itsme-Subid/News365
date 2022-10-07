@@ -18,9 +18,11 @@ export class NewsItem extends Component {
             </div>
           )}
           <div className="card-body">
-            <h5 className="card-title">
-              <span>{news.title} </span>
-            </h5>
+            {news.title && (
+              <h5 className="card-title">
+                <span>{news.title} </span>
+              </h5>
+            )}
             <p className="card-text">
               <small className="text-muted">
                 {news.source_id && (
@@ -35,7 +37,9 @@ export class NewsItem extends Component {
                   " Hours ago"}
               </small>
             </p>
-            <p className="card-text">{news.description}</p>
+            {news.description && (
+              <p className="card-text">{news.description}</p>
+            )}
             <div className="card-footer">
               {news.link && (
                 <a
