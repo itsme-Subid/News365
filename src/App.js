@@ -1,7 +1,11 @@
 import React, { Component } from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Header from "./components/Header/Header";
 import News from "./components/News/News";
 import Menu from "./components/Menu/Menu";
+import About from "./pages/About/About";
+import Contact from "./pages/Contact/Contact";
+import NotFound from "./pages/NotFound/NotFound";
 
 export class App extends Component {
   constructor() {
@@ -36,9 +40,13 @@ export class App extends Component {
     return (
       <>
         <Header menuToggle={menuToggle} />
-        <div className="container" style={{ marginTop: "5rem" }}>
-          <News category={this.state.category} />
-        </div>
+        <Router>
+          <Routes>
+            <Route exact path="/about" element={<About />} />
+            <Route exact path="/contact" element={<Contact />} />
+            <Route path="*" element={<News category={this.state.category} />} />
+          </Routes>
+        </Router>
         <Menu
           menu={this.state.menuOpen}
           menuToggle={menuToggle}

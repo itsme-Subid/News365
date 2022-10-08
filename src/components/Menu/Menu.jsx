@@ -19,6 +19,9 @@ export class Menu extends Component {
     document.querySelector(".menu-item").classList.add("active");
   }
   handleMenuItem = (e) => {
+    if (window.location.pathname !== "/") {
+      window.location.pathname = "/";
+    }
     document.querySelectorAll(".menu-item.active").forEach((item) => {
       item.classList.remove("active");
     });
@@ -41,6 +44,32 @@ export class Menu extends Component {
             {item}
           </div>
         ))}
+        <div
+          className="menu-item"
+          role="menuitem"
+          onClick={(e) => {
+            document.querySelectorAll(".menu-item.active").forEach((item) => {
+              item.classList.remove("active");
+            });
+            e.target.parentNode.classList.toggle("active");
+            this.props.menuToggle();
+          }}
+        >
+          <a href="/about">about</a>
+        </div>
+        <div
+          className="menu-item"
+          role="menuitem"
+          onClick={(e) => {
+            document.querySelectorAll(".menu-item.active").forEach((item) => {
+              item.classList.remove("active");
+            });
+            e.target.parentNode.classList.toggle("active");
+            this.props.menuToggle();
+          }}
+        >
+          <a href="/contact">contact</a>
+        </div>
       </div>
     );
   }

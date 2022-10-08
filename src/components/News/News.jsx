@@ -19,13 +19,13 @@ export class News extends Component {
       loading: true,
     });
     let news = await fetch(
-      `https://newsdata.io/api/1/news?apikey=pub_12002c8e6df9a490b63a54c68d2c5a2238546&language=en&category=${this.props.category}&page=${this.state.page}`
+      `https://newsdata.io/api/1/news?apikey=pub_12002c8e6df9a490b63a54c68d2c5a2238546&language=en&country=in&category=${this.props.category}&page=${this.state.page}`
     ).catch(async (err) => {
       return await fetch(
-        `https://newsdata.io/api/1/news?apikey=pub_11982d15958bd3acfdd11346baceaeefba638&language=en&category=${this.props.category}&page=${this.state.page}`
+        `https://newsdata.io/api/1/news?apikey=pub_11982d15958bd3acfdd11346baceaeefba638&language=en&country=in&category=${this.props.category}&page=${this.state.page}`
       ).catch(async (err) => {
         return await fetch(
-          `https://newsdata.io/api/1/news?apikey=pub_11997bb3d19563dba67e9680df5ecf5829c4b&language=en&category=${this.props.category}&page=${this.state.page}`
+          `https://newsdata.io/api/1/news?apikey=pub_11997bb3d19563dba67e9680df5ecf5829c4b&language=en&country=in&category=${this.props.category}&page=${this.state.page}`
         );
       });
     });
@@ -37,18 +37,18 @@ export class News extends Component {
     });
     this.article = parsedNews.results;
   };
-  componentDidUpdate(prevProps, prevState) {
-    if (
-      this.state.page !== prevState.page ||
-      this.props.category !== prevProps.category
-    ) {
-      this.fetchNews();
-    }
-  }
-  componentDidMount = this.fetchNews;
+  // componentDidUpdate(prevProps, prevState) {
+  //   if (
+  //     this.state.page !== prevState.page ||
+  //     this.props.category !== prevProps.category
+  //   ) {
+  //     this.fetchNews();
+  //   }
+  // }
+  // componentDidMount = this.fetchNews;
   render() {
     return (
-      <>
+      <div className="container">
         <h1 style={{ textTransform: "capitalize" }}>top headlines today </h1>
         {this.state.loading && <Loading />}
         <div className="news">
@@ -82,7 +82,7 @@ export class News extends Component {
             Next
           </button>
         </div>
-      </>
+      </div>
     );
   }
 }

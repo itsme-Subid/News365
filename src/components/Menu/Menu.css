@@ -39,6 +39,7 @@
   border-top-right-radius: 50rem;
   border-bottom-right-radius: 50rem;
   transition: all 0.15s ease;
+  cursor: pointer;
 }
 
 .menu .menu-item:hover {
