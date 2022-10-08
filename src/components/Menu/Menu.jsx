@@ -56,7 +56,7 @@ export class Menu extends Component {
             this.props.menuToggle();
           }}
         >
-          <a href="/about">about</a>
+          about
         </div>
         <div
           className="menu-item"
@@ -70,7 +70,7 @@ export class Menu extends Component {
             this.props.menuToggle();
           }}
         >
-          <a href="/contact">contact</a>
+          contact
         </div>
       </div>
     );
