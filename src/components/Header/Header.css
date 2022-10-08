@@ -77,7 +77,6 @@ header .heading h1 {
 
 .light .menu-icon .svg {
   background: rgb(var(--dark-color));
-  mask: url(../../assets/sun.svg) no-repeat center;
 }
 
 .modeToggler {
