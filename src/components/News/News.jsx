@@ -37,15 +37,15 @@ export class News extends Component {
     });
     this.article = parsedNews.results;
   };
-  // componentDidUpdate(prevProps, prevState) {
-  //   if (
-  //     this.state.page !== prevState.page ||
-  //     this.props.category !== prevProps.category
-  //   ) {
-  //     this.fetchNews();
-  //   }
-  // }
-  // componentDidMount = this.fetchNews;
+  componentDidUpdate(prevProps, prevState) {
+    if (
+      this.state.page !== prevState.page ||
+      this.props.category !== prevProps.category
+    ) {
+      this.fetchNews();
+    }
+  }
+  componentDidMount = this.fetchNews;
   render() {
     return (
       <div className="container">

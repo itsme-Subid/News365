@@ -5,7 +5,6 @@ import News from "./components/News/News";
 import Menu from "./components/Menu/Menu";
 import About from "./pages/About/About";
 import Contact from "./pages/Contact/Contact";
-import NotFound from "./pages/NotFound/NotFound";
 
 export class App extends Component {
   constructor() {
