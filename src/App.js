@@ -36,6 +36,21 @@ export class App extends Component {
     let changeCategory = (category) => {
       this.setState({ category: category });
     };
+    let tabs = [
+      "",
+      "top",
+      "world",
+      "business",
+      "entertainment",
+      "environment",
+      "health",
+      "politics",
+      "science",
+      "sports",
+      "technology",
+      "about",
+      "contact",
+    ];
     return (
       <>
         <Header menuToggle={menuToggle} />
@@ -43,7 +58,16 @@ export class App extends Component {
           <Routes>
             <Route exact path="/about" element={<About />} />
             <Route exact path="/contact" element={<Contact />} />
-            <Route path="*" element={<News category={this.state.category} />} />
+            {tabs.map((item, index) => {
+              return (
+                <Route
+                  key={index}
+                  exact
+                  path={`/${item}`}
+                  element={<News key={index} category={item} />}
+                />
+              );
+            })}
           </Routes>
         </Router>
         <Menu
