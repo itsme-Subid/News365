@@ -52,6 +52,7 @@ export class Menu extends Component {
               item.classList.remove("active");
             });
             e.target.parentNode.classList.toggle("active");
+            window.location.pathname = e.target.textContent;
             this.props.menuToggle();
           }}
         >
@@ -65,6 +66,7 @@ export class Menu extends Component {
               item.classList.remove("active");
             });
             e.target.parentNode.classList.toggle("active");
+            window.location.pathname = e.target.textContent;
             this.props.menuToggle();
           }}
         >
