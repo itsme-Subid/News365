@@ -1,6 +1,5 @@
 import "./Menu.css";
 import React, { Component } from "react";
-import { BrowserRouter as Router, Link } from "react-router-dom";
 
 export class Menu extends Component {
   menuItems = [
@@ -9,6 +8,7 @@ export class Menu extends Component {
     "business",
     "entertainment",
     "environment",
+    "food",
     "health",
     "politics",
     "science",
@@ -19,52 +19,60 @@ export class Menu extends Component {
     document.querySelector(".menu-item").classList.add("active");
   }
   handleMenuItem = (e) => {
-    document.querySelector(".menu-item.active").classList.remove("active");
+    if (window.location.pathname !== "/") {
+      window.location.pathname = "/";
+    }
+    document.querySelectorAll(".menu-item.active").forEach((item) => {
+      item.classList.remove("active");
+    });
     e.target.classList.toggle("active");
     this.props.changeCategory(e.target.innerText);
     this.props.menuToggle();
   };
   render() {
     return (
-      <Router>
-        <div className={`menu ${this.props.menu && "active"}`} role="menu">
-          {this.menuItems.map((item) => (
-            <Link to={`/${item}`} key={item} onClick={this.handleMenuItem}>
-              <div className="menu-item" role="menuitem">
-                {item}
-              </div>
-            </Link>
-          ))}
-          <Link
-            to="/about"
+      <div className={`menu ${this.props.menu && "active"}`} role="menu">
+        {this.menuItems.map((item) => (
+          <div
+            className="menu-item"
+            role="menuitem"
+            key={item}
             onClick={(e) => {
-              document
-                .querySelector(".menu-item.active")
-                .classList.remove("active");
-              e.target.classList.toggle("active");
-              this.props.menuToggle();
+              this.handleMenuItem(e);
             }}
           >
-            <div className="menu-item" role="menuitem">
-              about
-            </div>
-          </Link>
-          <Link
-            to="/contact"
-            onClick={(e) => {
-              document
-                .querySelector(".menu-item.active")
-                .classList.remove("active");
-              e.target.classList.toggle("active");
-              this.props.menuToggle();
-            }}
-          >
-            <div className="menu-item" role="menuitem">
-              contact
-            </div>
-          </Link>
+            {item}
+          </div>
+        ))}
+        <div
+          className="menu-item"
+          role="menuitem"
+          onClick={(e) => {
+            document.querySelectorAll(".menu-item.active").forEach((item) => {
+              item.classList.remove("active");
+            });
+            e.target.parentNode.classList.toggle("active");
+            window.location.pathname = e.target.textContent;
+            this.props.menuToggle();
+          }}
+        >
+          about
         </div>
-      </Router>
+        <div
+          className="menu-item"
+          role="menuitem"
+          onClick={(e) => {
+            document.querySelectorAll(".menu-item.active").forEach((item) => {
+              item.classList.remove("active");
+            });
+            e.target.parentNode.classList.toggle("active");
+            window.location.pathname = e.target.textContent;
+            this.props.menuToggle();
+          }}
+        >
+          contact
+        </div>
+      </div>
     );
   }
 }
