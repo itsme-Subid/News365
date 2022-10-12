@@ -2,12 +2,6 @@ import "./Header.css";
 import React, { Component } from "react";
 
 export class Header extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      text: "React.js",
-    };
-  }
   render() {
     let changeMode = () => {
       let body = document.body;
