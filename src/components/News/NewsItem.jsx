@@ -4,8 +4,35 @@ import React, { Component } from "react";
 export class NewsItem extends Component {
   render() {
     let { id, news } = this.props;
-    let pubDate = new Date(news.pubDate);
-    let nowDate = new Date();
+    const formattedDate = (date) => {
+      return new Date() - new Date(date) < 86400000
+        ? (new Date() - new Date(date)) / 3600000 < 1
+          ? new Date() - new Date(date) < 60000
+            ? "Just now"
+            : `${Math.floor((new Date() - new Date(date)) / 60000)} minutes ago`
+          : `${Math.floor((new Date() - new Date(date)) / 3600000)} hours ago`
+        : new Date() - new Date(date) < 86400000
+        ? "Today"
+        : new Date() - new Date(date) < 172800000
+        ? "Yesterday"
+        : new Date() - new Date(date) / 172800000 === 1
+        ? "a day ago"
+        : new Date() - new Date(date) / 172800000 < 7
+        ? `${Math.floor((new Date() - new Date(date)) / 172800000)} days ago`
+        : new Date() - new Date(date) / 604800000 === 1
+        ? "a week ago"
+        : new Date() - new Date(date) / 604800000 < 4
+        ? `${Math.floor((new Date() - new Date(date)) / 604800000)} weeks ago`
+        : new Date() - new Date(date) / 2629746000 === 1
+        ? "a month ago"
+        : new Date() - new Date(date) / 2629746000 < 12
+        ? `${Math.floor((new Date() - new Date(date)) / 2629746000)} months ago`
+        : new Date() - new Date(date) / 31556952000 === 1
+        ? "a year ago"
+        : `${Math.floor(
+            (new Date() - new Date(date)) / 31556952000
+          )} years ago`;
+    };
     return (
       <>
         <div className="card" key={id}>
@@ -33,8 +60,7 @@ export class NewsItem extends Component {
                     {news.source_id}
                   </span>
                 )}
-                {((nowDate - pubDate) / 1000 / 60 / 60).toPrecision(2) +
-                  " Hours ago"}
+                {formattedDate(news.pubDate)}
               </small>
             </p>
             {news.description && (
