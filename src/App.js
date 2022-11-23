@@ -23,7 +23,7 @@ export class App extends Component {
       "font-family: sans-serif; font-weight: 700; color: red; font-size: 5rem; text-align: center; text-transform: uppercase; width: 100%;"
     );
     console.log(
-      `%cThis is a browser feature intended for developers. If someone told you to copy and paste something here to enable a Calculator.js feature or "hack" this server, it is a scam and will give them access to your device.`,
+      `%cThis is a browser feature intended for developers. If someone told you to copy and paste something here to enable a News365 feature or "hack" this server, it is a scam and will give them access to your device.`,
       `font-size: 1.2rem; font-family: sans-serif; color: #fff`
     );
     console.log(
