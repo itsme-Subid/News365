@@ -22,5 +22,5 @@ Go to Project Directory and open `Command Prompt`
 ```
 
 ```bash
-  git clone git@github.com:itsme-Subid/News365.git
+  git clone https://github.com/itsme-Subid/News365.git
 ```
