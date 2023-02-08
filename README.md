@@ -1,8 +1,8 @@
 <div align="center">
 
-# [News365](https://raw.githubusercontent.com/itsme-Subid/News365/main/theme.png)
+# [News365](https://news365-itsme-subid.vercel.app/)
 
-![](https://raw.githubusercontent.com/itsme-Subid/news365/main/preview.webp)
+![](https://raw.githubusercontent.com/itsme-Subid/news365/main/theme.png)
 ![](https://img.shields.io/github/license/itsme-Subid/news365?style=for-the-badge)
 ![](https://img.shields.io/github/languages/top/itsme-Subid/news365?style=for-the-badge)
 ![](https://img.shields.io/github/languages/count/itsme-Subid/news365?style=for-the-badge)
