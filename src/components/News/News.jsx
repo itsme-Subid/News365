@@ -10,7 +10,6 @@ export class News extends Component {
     this.state = {
       news: this.article,
       loading: true,
-      page: 1,
       totalPages: 1,
     };
   }
@@ -19,13 +18,13 @@ export class News extends Component {
       loading: true,
     });
     let news = await fetch(
-      `https://newsdata.io/api/1/news?apikey=${process.env.REACT_APP_KEY1}&language=en&country=in&category=${this.props.category}&page=${this.state.page}`
+      `https://newsdata.io/api/1/news?apikey=${process.env.REACT_APP_KEY1}&language=en&country=in&category=${this.props.category}`
     ).catch(async (err) => {
       return await fetch(
-        `https://newsdata.io/api/1/news?apikey=${process.env.REACT_APP_KEY2}&language=en&country=in&category=${this.props.category}&page=${this.state.page}`
+        `https://newsdata.io/api/1/news?apikey=${process.env.REACT_APP_KEY2}&language=en&country=in&category=${this.props.category}`
       ).catch(async (err) => {
         return await fetch(
-          `https://newsdata.io/api/1/news?apikey=${process.env.REACT_APP_KEY3}&language=en&country=in&category=${this.props.category}&page=${this.state.page}`
+          `https://newsdata.io/api/1/news?apikey=${process.env.REACT_APP_KEY3}&language=en&country=in&category=${this.props.category}`
         );
       });
     });
@@ -56,31 +55,6 @@ export class News extends Component {
             this.state.news.map((element, index) => {
               return <NewsItem key={index} news={element} />;
             })}
-        </div>
-        <div className="buttons">
-          <button
-            disabled={this.state.page <= 1}
-            onClick={() => {
-              window.scroll(0, 0);
-              this.state.page > 1 &&
-                this.setState({
-                  page: this.state.page - 1,
-                });
-            }}
-          >
-            Previous
-          </button>
-          <button
-            disabled={this.state.totalPages === this.state.page}
-            onClick={() => {
-              window.scroll(0, 0);
-              this.setState({
-                page: this.state.page + 1,
-              });
-            }}
-          >
-            Next
-          </button>
         </div>
       </div>
     );
